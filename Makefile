@@ -7,4 +7,7 @@ createdb:
 dropdb:
 	docker exec -it postgres12 dropdb simple_bank
 
-.PHONY: postgres createdb dropdb
+sqlc:
+	sqlc generate
+
+.PHONY: postgres createdb dropdb sqlc

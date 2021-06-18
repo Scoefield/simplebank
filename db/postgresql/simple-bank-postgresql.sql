@@ -1,4 +1,4 @@
-CREATE TABLE "account" (
+CREATE TABLE "accounts" (
   "id" bigint PRIMARY KEY,
   "owner" varchar NOT NULL,
   "balance" bigint NOT NULL,
