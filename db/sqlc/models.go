@@ -11,7 +11,7 @@ type Accounts struct {
 	ID        int64     `json:"id"`
 	Owner     string    `json:"owner"`
 	Balance   int64     `json:"balance"`
-	Currentcy string    `json:"currentcy"`
+	Currency  string    `json:"currency"`
 	CreatedAt time.Time `json:"createdAt"`
 }
 
