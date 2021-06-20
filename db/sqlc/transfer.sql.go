@@ -5,7 +5,6 @@ package db
 
 import (
 	"context"
-	"database/sql"
 )
 
 const createTransfer = `-- name: CreateTransfer :one
@@ -15,13 +14,13 @@ INSERT INTO transfers (
   amount
 ) VALUES (
   $1, $2, $3
-) RETURNING id, from_account_id, to_account_id, amount
+) RETURNING id, from_account_id, to_account_id, amount, created_at
 `
 
 type CreateTransferParams struct {
-	FromAccountID int64         `json:"fromAccountID"`
-	ToAccountID   sql.NullInt64 `json:"toAccountID"`
-	Amount        int64         `json:"amount"`
+	FromAccountID int64 `json:"fromAccountID"`
+	ToAccountID   int64 `json:"toAccountID"`
+	Amount        int64 `json:"amount"`
 }
 
 func (q *Queries) CreateTransfer(ctx context.Context, arg CreateTransferParams) (Transfers, error) {
@@ -32,12 +31,13 @@ func (q *Queries) CreateTransfer(ctx context.Context, arg CreateTransferParams) 
 		&i.FromAccountID,
 		&i.ToAccountID,
 		&i.Amount,
+		&i.CreatedAt,
 	)
 	return i, err
 }
 
 const getTransfer = `-- name: GetTransfer :one
-SELECT id, from_account_id, to_account_id, amount FROM transfers
+SELECT id, from_account_id, to_account_id, amount, created_at FROM transfers
 WHERE id = $1 LIMIT 1
 `
 
@@ -49,21 +49,22 @@ func (q *Queries) GetTransfer(ctx context.Context, id int64) (Transfers, error) 
 		&i.FromAccountID,
 		&i.ToAccountID,
 		&i.Amount,
+		&i.CreatedAt,
 	)
 	return i, err
 }
 
 const listTransfers = `-- name: ListTransfers :many
-SELECT id, from_account_id, to_account_id, amount FROM transfers
+SELECT id, from_account_id, to_account_id, amount, created_at FROM transfers
 WHERE from_account_id = $1 OR to_account_id = $2
 ORDER BY id LIMIT $3 OFFSET $4
 `
 
 type ListTransfersParams struct {
-	FromAccountID int64         `json:"fromAccountID"`
-	ToAccountID   sql.NullInt64 `json:"toAccountID"`
-	Limit         int32         `json:"limit"`
-	Offset        int32         `json:"offset"`
+	FromAccountID int64 `json:"fromAccountID"`
+	ToAccountID   int64 `json:"toAccountID"`
+	Limit         int32 `json:"limit"`
+	Offset        int32 `json:"offset"`
 }
 
 func (q *Queries) ListTransfers(ctx context.Context, arg ListTransfersParams) ([]Transfers, error) {
@@ -85,6 +86,7 @@ func (q *Queries) ListTransfers(ctx context.Context, arg ListTransfersParams) ([
 			&i.FromAccountID,
 			&i.ToAccountID,
 			&i.Amount,
+			&i.CreatedAt,
 		); err != nil {
 			return nil, err
 		}

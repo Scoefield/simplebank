@@ -3,7 +3,6 @@
 package db
 
 import (
-	"database/sql"
 	"time"
 )
 
@@ -24,9 +23,10 @@ type Entries struct {
 }
 
 type Transfers struct {
-	ID            int64         `json:"id"`
-	FromAccountID int64         `json:"fromAccountID"`
-	ToAccountID   sql.NullInt64 `json:"toAccountID"`
+	ID            int64 `json:"id"`
+	FromAccountID int64 `json:"fromAccountID"`
+	ToAccountID   int64 `json:"toAccountID"`
 	// must be positive.
-	Amount int64 `json:"amount"`
+	Amount    int64     `json:"amount"`
+	CreatedAt time.Time `json:"createdAt"`
 }
