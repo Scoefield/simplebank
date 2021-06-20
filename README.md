@@ -1,5 +1,5 @@
 # simplebank
-practice golang+postgresql+docker+develop+deploy by simplebank project
+Practice golang+postgresql+docker+gin by simplebank project
 
 ## Simple bank service
 
