@@ -31,3 +31,5 @@ The service that is a simple bank, which is going to build by golang. It will pr
 
 - run test  
 `make test`
+
+## Continuously updated......
