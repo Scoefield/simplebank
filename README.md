@@ -1,6 +1,8 @@
 # simplebank
 Practice golang+postgresql+docker+gin by simplebank project
 
+![golang-docker](./docker-golang.jpeg)
+
 ## Simple bank service
 
 The service that is a simple bank, which is going to build by golang. It will provide APIs for the frontend to do something following things:
@@ -33,3 +35,5 @@ The service that is a simple bank, which is going to build by golang. It will pr
 `make test`
 
 ## Continuously updated......
+
+......
