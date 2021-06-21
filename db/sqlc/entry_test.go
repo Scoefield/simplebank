@@ -6,11 +6,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-redis/redis/v7/internal/util"
 	"github.com/stretchr/testify/require"
 )
 
-func createRandomEntry(t *testing.T, account Account) Entry {
+func createRandomEntry(t *testing.T, account Accounts) Entries {
 	arg := CreateEntryParams{
 		AccountID: account.ID,
 		Amount:    util.RandomMoney(),
