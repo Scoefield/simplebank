@@ -38,6 +38,13 @@ The service that is a simple bank, which is going to build by golang. It will pr
 
 `SERVER_ADDRESS=0.0.0.0:8081 make server`
 
+## github ci action
+
+- db connection refused
+
+search "golang action postgres"
+
+
 ## Continuously updated......
 
 ......
