@@ -44,6 +44,20 @@ The service that is a simple bank, which is going to build by golang. It will pr
 
 search "golang action postgres"
 
+## other install tools or cmd
+
+- gomock
+
+`go get github.com/golang/mock/mockgen@v1.6.0`
+
+- generate mock file
+
+`mockgen -destination db/mock/store.go GitCode/simplebank/db/sqlc Store`
+
+- modify mock package name
+
+`mockgen -package mockdb -destination db/mock/store.go GitCode/simplebank/db/sqlc Store`
+
 
 ## Continuously updated......
 
