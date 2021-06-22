@@ -34,6 +34,10 @@ The service that is a simple bank, which is going to build by golang. It will pr
 - run test  
 `make test`
 
+- run server with cmd by config variables
+
+`SERVER_ADDRESS=0.0.0.0:8081 make server`
+
 ## Continuously updated......
 
 ......
